@@ -12,7 +12,7 @@ from msbff.default import (FIG_A_COLOR, FIG_B_COLOR, FIG_C_COLOR, FIG_D_COLOR,
 # from preprocessing import read_rawdata
 # import pandas as pd
 # from processing import processing_pipeline
-
+#
 
 #
 #
@@ -22,12 +22,12 @@ def set_layout():
     fig = plt.figure(figsize=(16, 9))  # 16 * 12
 
     ax1 = fig.add_axes([0.1, 0.55, 0.3, 0.3])
-    ax2 = fig.add_axes([0.5, 0.55, 0.3, 0.3])
+    ax2 = fig.add_axes([0.45, 0.55, 0.3, 0.3])
     ax3 = fig.add_axes([0.1, 0.15, 0.3, 0.3])
-    ax4 = fig.add_axes([0.5, 0.15, 0.3, 0.3])
-    ax5 = fig.add_axes([0.86, 0.65, 0.015, 0.13])
-    ax6 = fig.add_axes([0.86, 0.45, 0.015, 0.13])
-    ax7 = fig.add_axes([0.86, 0.25, 0.015, 0.13])
+    ax4 = fig.add_axes([0.45, 0.15, 0.3, 0.3])
+    ax5 = fig.add_axes([0.82, 0.65, 0.015, 0.13])
+    ax6 = fig.add_axes([0.82, 0.45, 0.015, 0.13])
+    ax7 = fig.add_axes([0.82, 0.25, 0.015, 0.13])
     axs = [ax1, ax2, ax3, ax4, ax5, ax6, ax7]
     return fig, axs
 
@@ -39,7 +39,7 @@ def heatmap(data, row_labels, col_labels, x_label, y_label,
     ax.yaxis.tick_right()
 
     # Show all ticks and label them with the respective list entries.
-    ax.set_xticks(np.arange(data.shape[1]), labels=col_labels)
+    ax.set_xticks(np.arange(data.shape[1]), labels=col_labels, rotation=45)
     ax.set_yticks(np.arange(data.shape[0]), labels=row_labels)
 
     ax.set_xlabel(x_label, fontdict=LABEL_FONTDICT)
@@ -110,14 +110,13 @@ def plot_pipeline(bioactivity_df, block_score_df, max_inhibition_rate_df, relati
 
     # plt.show()
 
-#
 # if __name__ == '__main__':
-#     fp = "/Users/zhouzhenyi/Documents/github/SciProc/BioFF/msbff/test/rawdata.csv"
+#     fp = "/Users/zhouzhenyi/Documents/github/SciProc/MSBFF/msbff/test/rawdata.csv"
 #     _, _, _, bioactivity_df = read_rawdata(fp)
 #
-#     csv_path = "/Users/zhouzhenyi/Documents/github/SciProc/BioFF/msbff/test/dataextraction.csv"
+#     csv_path = "/Users/zhouzhenyi/Documents/github/SciProc/MSBFF/msbff/test/dataextraction.csv"
 #     df = pd.read_csv(csv_path)
 #
 #     block_score_df, max_inhibition_rate_df, relative_signal_intensity_df = processing_pipeline(df, 1, 100)
 #     # print(block_score_df.columns.get_level_values(1))
-#     plot_pipeline(bioactivity_df, block_score_df, max_inhibition_rate_df, relative_signal_intensity_df)
+#     plot_pipeline(bioactivity_df, block_score_df, max_inhibition_rate_df, relative_signal_intensity_df, ".")

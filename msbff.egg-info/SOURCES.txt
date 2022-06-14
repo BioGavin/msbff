@@ -1,10 +1,11 @@
 LICENSE
 MANIFEST.in
+README.md
 pyproject.toml
 setup.py
 msbff/__init__.py
-msbff/bioff_pipeline.py
 msbff/default.py
+msbff/msbff_pipeline.py
 msbff/preprocessing.py
 msbff/processing.py
 msbff/visualization.py

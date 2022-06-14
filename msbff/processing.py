@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 from msbff.default import RT_COL, MZ_COL, PCC_COL, SN_COL
 
@@ -34,8 +35,8 @@ def block(df: pd.DataFrame, rt_binning, mz_binning):
     n_rt_bins = int((df[RT_COL].max() - rt_range_start) // rt_binning)
     n_mz_bins = int((df[MZ_COL].max() - mz_range_start) // mz_binning)
 
-    rt_bins = [i for i in range(rt_range_start, (n_rt_bins + 1) * rt_binning, rt_binning)]
-    mz_bins = [i for i in range(mz_range_start, (n_mz_bins + 1) * mz_binning, mz_binning)]
+    rt_bins = np.arange(rt_range_start, rt_range_start + (n_rt_bins + 1) * rt_binning, rt_binning)
+    mz_bins = np.arange(mz_range_start, mz_range_start + (n_mz_bins + 1) * mz_binning, mz_binning)
 
     groups = df.groupby(by=[pd.cut(df[RT_COL], bins=rt_bins), pd.cut(df[MZ_COL], bins=mz_bins)])
     return groups

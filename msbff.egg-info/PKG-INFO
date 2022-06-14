@@ -1,8 +1,8 @@
 Metadata-Version: 2.1
 Name: msbff
-Version: 0.0.1
+Version: 0.0.3
 Summary: Bioactive Fractions Filtering.
-Home-page: https://github.com/BioGavin/bioff
+Home-page: https://github.com/BioGavin/msbff
 Author: Zhen-Yi Zhou
 Author-email: gavinchou64@gmail.com
 License: GPL

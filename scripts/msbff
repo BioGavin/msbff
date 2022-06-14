@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import argparse
-from msbff.bioff_pipeline import run_bioff_pipeline
+from msbff.msbff_pipeline import run_bioff_pipeline
 import msbff
 
 parser = argparse.ArgumentParser(
@@ -43,10 +43,10 @@ parser.add_argument('-rtu', '--rt_upper', type=float, default=7,
 parser.add_argument('-f', '--fdr_threshold', type=float, default=0.05,
                     help='FDR threshold. (default: <=%(default)s)')
 
-parser.add_argument('-rtb', '--rt_binning', type=int, default=1,
+parser.add_argument('-rtb', '--rt_binning', type=float, default=1,
                     help='Rt binning. (default: %(default)s)')
 
-parser.add_argument('-mzb', '--mz_binning', type=int, default=100,
+parser.add_argument('-mzb', '--mz_binning', type=float, default=100,
                     help='Mz binning. (default: %(default)s)')
 
 

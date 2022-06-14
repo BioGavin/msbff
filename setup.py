@@ -22,7 +22,7 @@ version = get_version(path.join(curr_dir, 'msbff', '__init__.py'))
 setup(
     name='msbff',
     version=version,
-    url='https://github.com/BioGavin/bioff',
+    url='https://github.com/BioGavin/msbff',
     license='GPL',
     author='Zhen-Yi Zhou',
     author_email="gavinchou64@gmail.com",
@@ -35,6 +35,7 @@ setup(
     python_requires=">=3.8",
     install_requires=[
         "pandas",
-        "matplotlib"
+        "matplotlib",
+        "numpy"
     ]
 )

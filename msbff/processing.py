@@ -29,14 +29,14 @@ def calc_sn_sum(df: pd.DataFrame):
     return sn_sum
 
 
-def block(df: pd.DataFrame, rt_binning, mz_binning):
-    rt_range_start = int(df[RT_COL].min())
-    mz_range_start = int((df[MZ_COL].min() // 100) * 100)
-    n_rt_bins = int((df[RT_COL].max() - rt_range_start) // rt_binning)
-    n_mz_bins = int((df[MZ_COL].max() - mz_range_start) // mz_binning)
+def block(df: pd.DataFrame,
+          rt_lower, rt_upper, rt_binning,
+          mz_lower, mz_upper, mz_binning):
+    n_rt_bins = int((rt_upper - rt_lower) // rt_binning)
+    n_mz_bins = int((mz_upper - mz_lower) // mz_binning)
 
-    rt_bins = np.arange(rt_range_start, rt_range_start + (n_rt_bins + 1) * rt_binning, rt_binning)
-    mz_bins = np.arange(mz_range_start, mz_range_start + (n_mz_bins + 1) * mz_binning, mz_binning)
+    rt_bins = np.arange(rt_lower, rt_lower + (n_rt_bins + 1) * rt_binning, rt_binning)
+    mz_bins = np.arange(mz_lower, mz_lower + (n_mz_bins + 1) * mz_binning, mz_binning)
 
     groups = df.groupby(by=[pd.cut(df[RT_COL], bins=rt_bins), pd.cut(df[MZ_COL], bins=mz_bins)])
     return groups
@@ -53,12 +53,12 @@ def max_inhibition_rate_per_block(groups):
 
 
 def relative_signal_intensity_per_block(groups, sn_sum):
-    relative_signal_intensity_df = groups[MZ_COL].mean().to_frame().unstack() / sn_sum
+    relative_signal_intensity_df = groups[MZ_COL].sum().to_frame().unstack() / sn_sum * 100
     return relative_signal_intensity_df
 
 
-def processing_pipeline(df: pd.DataFrame, rt_binning, mz_binning):
-    groups = block(df, rt_binning, mz_binning)
+def processing_pipeline(df: pd.DataFrame, rt_lower, rt_upper, rt_binning, mz_lower, mz_upper, mz_binning):
+    groups = block(df, rt_lower, rt_upper, rt_binning, mz_lower, mz_upper, mz_binning)
 
     pcc_sum = calc_pcc_sum(df)
     block_score_df = block_score(groups, pcc_sum)

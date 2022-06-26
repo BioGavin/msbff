@@ -43,6 +43,17 @@ msbff -i rawdata.csv -o output  # run msbff in default
 
 
 
+### Output Files
+
+- `data_extraction.csv`: The data obtained by filtering the input raw data according to the requirements.
+- `block_score.csv`: Percentage of the sum of Pearson correlation coefficients (PCC) within each block.
+- `max_inhibition_rate.csv`: Maximum value of Pearson correlation coefficient (PCC) within each block.
+- `relative_signal_intensity.csv`: Percentage of the sum of S/N average within each block.
+
+- `Fig.png`: Visualization results of the above three tables of data.
+
+
+
 ## Contact
 
 Don't hesitate to contact me by email if you have any problems.

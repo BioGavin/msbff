@@ -72,9 +72,9 @@ def filter_data(df: pd.DataFrame,
 
     pcc_condition = (df[PCC_COL] > pcc_threshold)
     reli_condition = (df[RELI_COL] >= reli_threshold)
-    mz_condition = (mz_lower <= df[MZ_COL]) & (df[MZ_COL] <= mz_upper)
+    mz_condition = (mz_lower < df[MZ_COL]) & (df[MZ_COL] <= mz_upper)
     sn_condition = (df[SN_COL] > sn_threshold)
-    rt_condition = (rt_lower <= df[RT_COL]) & (df[RT_COL] <= rt_upper)
+    rt_condition = (rt_lower < df[RT_COL]) & (df[RT_COL] <= rt_upper)
 
     filtered_df = df[pcc_condition & reli_condition & mz_condition & sn_condition & rt_condition]
     return filtered_df

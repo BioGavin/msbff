@@ -46,7 +46,11 @@ def run_bioff_pipeline(input_csv,
 
     """Module2-Processing data: Calculate each variable value."""
     block_score_df, max_inhibition_rate_df, relative_signal_intensity_df = processing_pipeline(preprocessed_df,
+                                                                                               rt_lower,
+                                                                                               rt_upper,
                                                                                                rt_binning,
+                                                                                               mz_lower,
+                                                                                               mz_upper,
                                                                                                mz_binning)
     """Save the results of Module2 processing."""
     block_score_df.to_csv(os.path.join(output_folder, M2_BLOCK_SCORE))
@@ -54,4 +58,5 @@ def run_bioff_pipeline(input_csv,
     relative_signal_intensity_df.to_csv(os.path.join(output_folder, M2_RELATIVE_SIGNAL_INTENSITY))
 
     """Module3-Data visualization: Plot one line chart and three heatmap."""
-    plot_pipeline(class_bioactivity, block_score_df, max_inhibition_rate_df, relative_signal_intensity_df, output_folder)
+    plot_pipeline(class_bioactivity, block_score_df, max_inhibition_rate_df, relative_signal_intensity_df,
+                  output_folder)

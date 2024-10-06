@@ -54,6 +54,16 @@ msbff -i rawdata.csv -o output  # run msbff in default
 
 
 
+
+
+## Citation
+
+If you find this project helpful, please cite [the paper](https://doi.org/10.1016/j.ejmech.2022.114699) as:
+
+> Yichao Ge, Yihan Ma, Meilu Zhao, Jihua Wei, Xiaodan Wu, Zunjing Zhang, Han Yang, Houxing Lei, and Bin Wu. "Exploring gabosine and chlorogentisyl alcohol derivatives from a marine-derived fungus as EcGUS inhibitors with informatic assisted approaches." *European Journal of Medicinal Chemistry* 242 (2022): 114699.
+
+
+
 ## Contact
 
 Don't hesitate to contact me by email if you have any problems.
